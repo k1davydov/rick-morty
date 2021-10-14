@@ -9,22 +9,44 @@ import Foundation
 import Alamofire
 import UIKit
 
-struct Episodes {
-    let name: String
-    let episode: String
+public var generalUrl = "https://rickandmortyapi.com/api/character"
+
+class myData {
+    var nextPage: String
+    
+    var characters: [RickMorty]
     
     init?(_ data: NSDictionary) {
-        guard let name = data["name"] as? String,
-              let episode = data["episode"] as? String
+        guard let result = data["info"] as? NSDictionary,
+              let final = result["next"] as? String
         else {
             return nil
         }
-        self.name = name
-        self.episode = episode
+        
+        guard let result = data["results"] as? NSArray
+        else {
+            return nil
+        }
+        var characters = [RickMorty]()
+        for element in result {
+            guard let data = element as? NSDictionary,
+                  let character = RickMorty(data)
+            else {return nil}
+            characters.append(character)
+        }
+        
+        self.characters = characters
+        self.nextPage = final
+    }
+    
+    init() {
+        self.nextPage = ""
+        self.characters = [RickMorty()]
     }
 }
 
-struct RickMorty {
+class RickMorty {
+    let id: Int
     let name: String
     let status: String
     let species: String
@@ -32,20 +54,18 @@ struct RickMorty {
     let imageURL: String
     let location: String
     let characterURL: String
-    let episodes: NSArray
     
     init?(_ data: NSDictionary) {
-        guard let name = data["name"] as? String,
+        guard let id = data["id"] as? Int,
+              let name = data["name"] as? String,
               let status = data["status"] as? String,
               let species = data["species"] as? String,
               let gender = data["gender"] as? String,
               let imageURL = data["image"] as? String,
               let location1 = data["location"] as? NSDictionary, let location = location1["name"] as? String,
-              let characterURL = data["url"] as? String,
-              let episodes = data["episode"] as? NSArray
-        else {
-            return nil
-        }
+              let characterURL = data["url"] as? String else {return nil}
+        
+        self.id = id
         self.name = name
         self.status = status
         self.species = species
@@ -53,10 +73,10 @@ struct RickMorty {
         self.imageURL = imageURL
         self.location = location
         self.characterURL = characterURL
-        self.episodes = episodes
     }
     
     init() {
+        self.id = 0
         self.name = ""
         self.status = ""
         self.species = ""
@@ -64,31 +84,25 @@ struct RickMorty {
         self.imageURL = ""
         self.location = ""
         self.characterURL = ""
-        self.episodes = NSArray()
     }
 }
 
-func downloadData(completion: @escaping ([RickMorty]) -> Void) {
-    var rickMorty = [RickMorty]()
-    AF.request("https://rickandmortyapi.com/api/character").validate().responseJSON { responseJSON in
+func downloadCharacters(_ url: String, completion: @escaping (myData) -> Void) {
+    
+    AF.request(url).validate().responseJSON { responseJSON in
         switch responseJSON.result {
         case .success(let value):
             guard let jsonDict = value as? NSDictionary,
-                  let jsonArray = jsonDict["results"] as? NSArray else {return}
-            for element in jsonArray {
-                guard let result = element as? NSDictionary,
-                      let final = RickMorty(result) else {return}
-                rickMorty.append(final)
-                completion(rickMorty)
-            }
+                  let result = myData(jsonDict) else {return}
+            completion(result)
         case .failure(let error):
             print(error)
         }
     }
 }
 
-func downloadImage(url: String, completion: @escaping (UIImage) -> Void) {
-    AF.request(url).validate().responseData { responseData in
+func downloadImage(_ index: Int, completion: @escaping (UIImage) -> Void) {
+    AF.request(generalUrl+"/avatar/\(index).jpeg").validate().responseData { responseData in
         switch responseData.result {
         case .success(let data):
             guard let image = UIImage(data: data) else {return}

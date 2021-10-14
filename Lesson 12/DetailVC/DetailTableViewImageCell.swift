@@ -9,4 +9,11 @@ import UIKit
 
 class DetailTableViewImageCell: UITableViewCell {
     @IBOutlet weak var bigImage: UIImageView!
+    
+    func initDetailCell (_ index: Int) {
+        downloadImage(index+1, completion: { image in
+            self.bigImage.image = image
+        })
+        self.selectionStyle = .none
+    }
 }
