@@ -10,17 +10,19 @@
 		6104039E271836E30077F40B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610D7D3726D32D440099713E /* Main.storyboard */; };
 		610403A0271838310077F40B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610D7D3C26D32D480099713E /* LaunchScreen.storyboard */; };
 		610403A1271842140077F40B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610D7D3A26D32D480099713E /* Assets.xcassets */; };
+		6108635B2744F0DA00FA3391 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6108635A2744F0DA00FA3391 /* DetailVC.swift */; };
+		6108635D2745022000FA3391 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6108635C2745022000FA3391 /* DetailModel.swift */; };
+		610863612745039E00FA3391 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610863602745039E00FA3391 /* DetailPresenter.swift */; };
 		610D7D3226D32D440099713E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610D7D3126D32D440099713E /* AppDelegate.swift */; };
 		610D7D3426D32D440099713E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610D7D3326D32D440099713E /* SceneDelegate.swift */; };
-		611B47B327104B5100F0406A /* DetailTableViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611B47B227104B5100F0406A /* DetailTableViewImageCell.swift */; };
+		611773032743F8AE00A21144 /* GeneralVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611773022743F8AE00A21144 /* GeneralVC.swift */; };
+		611773072744017900A21144 /* GeneralPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611773062744017900A21144 /* GeneralPresenter.swift */; };
+		611773092744018D00A21144 /* GeneralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611773082744018D00A21144 /* GeneralModel.swift */; };
+		6117730B274412DC00A21144 /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117730A274412DC00A21144 /* Persistance.swift */; };
 		612762A826D3341800AB92CA /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612762A326D333AA00AB92CA /* Alamofire.xcframework */; };
 		612762A926D3341800AB92CA /* Alamofire.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 612762A326D333AA00AB92CA /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		613C598526E7BC6B00227764 /* ModelGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C598426E7BC6B00227764 /* ModelGeneral.swift */; };
-		6141347126D3DD950020E1D3 /* GeneralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6141347026D3DD950020E1D3 /* GeneralTableViewController.swift */; };
 		6141347326D3DDC70020E1D3 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6141347226D3DDC70020E1D3 /* GeneralTableViewCell.swift */; };
-		61448B0D270DED2C00237BA2 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61448B0C270DED2C00237BA2 /* DetailTableViewController.swift */; };
 		61448B0F270DF69900237BA2 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61448B0E270DF69900237BA2 /* DetailTableViewCell.swift */; };
-		614FE91C2715A02B00A89BE1 /* ModelDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614FE91B2715A02B00A89BE1 /* ModelDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +39,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6108635A2744F0DA00FA3391 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		6108635C2745022000FA3391 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		610863602745039E00FA3391 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		610D7D2E26D32D440099713E /* Lesson 12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lesson 12.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		610D7D3126D32D440099713E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		610D7D3326D32D440099713E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,14 +49,13 @@
 		610D7D3A26D32D480099713E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Lesson 12/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		610D7D3D26D32D480099713E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		610D7D3F26D32D480099713E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Lesson 12/Info.plist"; sourceTree = SOURCE_ROOT; };
-		611B47B227104B5100F0406A /* DetailTableViewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewImageCell.swift; sourceTree = "<group>"; };
+		611773022743F8AE00A21144 /* GeneralVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralVC.swift; sourceTree = "<group>"; };
+		611773062744017900A21144 /* GeneralPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPresenter.swift; sourceTree = "<group>"; };
+		611773082744018D00A21144 /* GeneralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralModel.swift; sourceTree = "<group>"; };
+		6117730A274412DC00A21144 /* Persistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
 		612762A326D333AA00AB92CA /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
-		613C598426E7BC6B00227764 /* ModelGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelGeneral.swift; sourceTree = "<group>"; };
-		6141347026D3DD950020E1D3 /* GeneralTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewController.swift; sourceTree = "<group>"; };
 		6141347226D3DDC70020E1D3 /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
-		61448B0C270DED2C00237BA2 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		61448B0E270DF69900237BA2 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
-		614FE91B2715A02B00A89BE1 /* ModelDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 			children = (
 				614FE91927158E4600A89BE1 /* GeneralVC */,
 				614FE91A27158E5C00A89BE1 /* DetailVC */,
+				6117730A274412DC00A21144 /* Persistance.swift */,
 				610D7D3326D32D440099713E /* SceneDelegate.swift */,
 				610D7D3126D32D440099713E /* AppDelegate.swift */,
 				610D7D3C26D32D480099713E /* LaunchScreen.storyboard */,
@@ -109,9 +114,10 @@
 		614FE91927158E4600A89BE1 /* GeneralVC */ = {
 			isa = PBXGroup;
 			children = (
-				6141347026D3DD950020E1D3 /* GeneralTableViewController.swift */,
+				611773022743F8AE00A21144 /* GeneralVC.swift */,
+				611773082744018D00A21144 /* GeneralModel.swift */,
 				6141347226D3DDC70020E1D3 /* GeneralTableViewCell.swift */,
-				613C598426E7BC6B00227764 /* ModelGeneral.swift */,
+				611773062744017900A21144 /* GeneralPresenter.swift */,
 			);
 			path = GeneralVC;
 			sourceTree = "<group>";
@@ -119,10 +125,10 @@
 		614FE91A27158E5C00A89BE1 /* DetailVC */ = {
 			isa = PBXGroup;
 			children = (
-				61448B0C270DED2C00237BA2 /* DetailTableViewController.swift */,
+				6108635A2744F0DA00FA3391 /* DetailVC.swift */,
+				6108635C2745022000FA3391 /* DetailModel.swift */,
+				610863602745039E00FA3391 /* DetailPresenter.swift */,
 				61448B0E270DF69900237BA2 /* DetailTableViewCell.swift */,
-				611B47B227104B5100F0406A /* DetailTableViewImageCell.swift */,
-				614FE91B2715A02B00A89BE1 /* ModelDetail.swift */,
 			);
 			path = DetailVC;
 			sourceTree = "<group>";
@@ -198,15 +204,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61448B0D270DED2C00237BA2 /* DetailTableViewController.swift in Sources */,
-				613C598526E7BC6B00227764 /* ModelGeneral.swift in Sources */,
-				611B47B327104B5100F0406A /* DetailTableViewImageCell.swift in Sources */,
+				6108635D2745022000FA3391 /* DetailModel.swift in Sources */,
 				61448B0F270DF69900237BA2 /* DetailTableViewCell.swift in Sources */,
-				6141347126D3DD950020E1D3 /* GeneralTableViewController.swift in Sources */,
-				614FE91C2715A02B00A89BE1 /* ModelDetail.swift in Sources */,
+				610863612745039E00FA3391 /* DetailPresenter.swift in Sources */,
+				6117730B274412DC00A21144 /* Persistance.swift in Sources */,
+				6108635B2744F0DA00FA3391 /* DetailVC.swift in Sources */,
 				610D7D3226D32D440099713E /* AppDelegate.swift in Sources */,
+				611773092744018D00A21144 /* GeneralModel.swift in Sources */,
+				611773032743F8AE00A21144 /* GeneralVC.swift in Sources */,
 				6141347326D3DDC70020E1D3 /* GeneralTableViewCell.swift in Sources */,
 				610D7D3426D32D440099713E /* SceneDelegate.swift in Sources */,
+				611773072744017900A21144 /* GeneralPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
