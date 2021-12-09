@@ -136,6 +136,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4as-FC-lSP" id="iwE-O3-Zcs"/>
+                                    <outlet property="delegate" destination="4as-FC-lSP" id="zAI-u4-mHj"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ntS-oA-LtF"/>

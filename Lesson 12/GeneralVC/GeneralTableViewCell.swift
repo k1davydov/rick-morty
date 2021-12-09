@@ -17,15 +17,15 @@ class GeneralTableViewCell: UITableViewCell {
     @IBOutlet weak var gender: UILabel!
     @IBOutlet weak var location: UILabel!
     
-    func initGeneralCell(name: String, gender: String, location: String, bigImage: UIImage, status: (String, UIColor)) {
+    func initGeneralCell(name: String, gender: String, location: String, bigImage: UIImage, status: String) {
         self.selectionStyle = .none
         
         self.name.text = name
         self.gender.text = gender
         self.location.text = location
         self.bigImage.image = bigImage
-        self.alive.text = status.0
-        self.indicator.backgroundColor = status.1
+        self.alive.text = status
+        self.indicator.backgroundColor = chooseColor(status: status)
         
         self.indicator.layer.cornerRadius = self.indicator.frame.width/2
     }

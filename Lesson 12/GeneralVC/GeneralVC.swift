@@ -11,23 +11,19 @@ class GeneralVC: UIViewController {
     @IBOutlet weak var generalTableView: UITableView!
     
     var presenter: GeneralPresenter!
-    var model = [RickMorty]()
+    var model = [ListCharacter]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = GeneralPresenter(view: generalTableView, model: model)
+        presenter = GeneralPresenter(view: generalTableView, model: model, vc: self)
         generalTableView.dataSource = presenter
-        generalTableView.delegate = self
-        
-        checkInternetConnection(self)
-        presenter.showCharacters(generalUrl)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        checkInternetConnection(self)
+        presenter.showCharacters()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,7 +34,8 @@ class GeneralVC: UIViewController {
         guard segue.identifier == "ShowDetail",
               let vc = segue.destination as? DetailVC,
               let index = generalTableView.indexPathForSelectedRow?.row else {return}
-        vc.model = presenter.model[index]
+        vc.characterUrl = presenter.model[index].characterUrl
+        vc.name = presenter.model[index].name
     }
 }
 

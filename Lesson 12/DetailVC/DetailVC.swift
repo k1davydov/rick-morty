@@ -11,21 +11,21 @@ class DetailVC: UIViewController {
     @IBOutlet weak var detailTableView: UITableView!
     
     var presenter: DetailPresenter!
-    var model = RickMorty(name: "", status: ("", .systemBackground), species: "", gender: "", image: UIImage(), episodeUrl: NSArray(), imageUrl: "", locationUrl: "", characterUrl: "")
+    var characterUrl = ""
+    var model = DescriptionCharacter(name: "", status: "", species: "", gender: "", location: "", episodes: [""], image: UIImage(systemName: "person")!)
+    var name = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = model.name
-        
-        presenter = DetailPresenter(tableView: detailTableView, model: model)
+        presenter = DetailPresenter(tableView: detailTableView, model: model, vc: self)
         
         detailTableView.dataSource = presenter
         detailTableView.delegate = presenter
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        detailTableView.reloadData()
-        
-        checkInternetConnection(self)
-        presenter.episodesLoader()
+        presenter.showCharacter(url: characterUrl, name: name)
     }
 }

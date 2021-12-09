@@ -14,9 +14,9 @@ class DetailTableViewCell: UITableViewCell {
     func initDetailCell(image: UIImage, status: String, species: String, gender: String, location: String, index: IndexPath) {
         self.selectionStyle = .none
         generalLabel.isHidden = false
-        if let imageView = self.viewWithTag(100) {
-            imageView.removeFromSuperview()
-        }
+//        if let imageView = self.viewWithTag(100) {
+//            imageView.removeFromSuperview()
+//        }
         
         switch index.row {
         case 0:

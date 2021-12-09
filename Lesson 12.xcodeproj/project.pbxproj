@@ -23,6 +23,11 @@
 		612762A926D3341800AB92CA /* Alamofire.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 612762A326D333AA00AB92CA /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6141347326D3DDC70020E1D3 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6141347226D3DDC70020E1D3 /* GeneralTableViewCell.swift */; };
 		61448B0F270DF69900237BA2 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61448B0E270DF69900237BA2 /* DetailTableViewCell.swift */; };
+		616EB11D2760A9FE00D6A4C7 /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616EB11B2760A9FE00D6A4C7 /* RealmSwift.xcframework */; };
+		616EB11E2760A9FE00D6A4C7 /* RealmSwift.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 616EB11B2760A9FE00D6A4C7 /* RealmSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		616EB11F2760A9FE00D6A4C7 /* Realm.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616EB11C2760A9FE00D6A4C7 /* Realm.xcframework */; };
+		616EB1202760A9FE00D6A4C7 /* Realm.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 616EB11C2760A9FE00D6A4C7 /* Realm.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		616EB1222760E3C300D6A4C7 /* GlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616EB1212760E3C300D6A4C7 /* GlobalModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +38,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				612762A926D3341800AB92CA /* Alamofire.xcframework in CopyFiles */,
+				616EB11E2760A9FE00D6A4C7 /* RealmSwift.xcframework in CopyFiles */,
+				616EB1202760A9FE00D6A4C7 /* Realm.xcframework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,9 @@
 		612762A326D333AA00AB92CA /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		6141347226D3DDC70020E1D3 /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
 		61448B0E270DF69900237BA2 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		616EB11B2760A9FE00D6A4C7 /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = Carthage/Build/RealmSwift.xcframework; sourceTree = "<group>"; };
+		616EB11C2760A9FE00D6A4C7 /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = Carthage/Build/Realm.xcframework; sourceTree = "<group>"; };
+		616EB1212760E3C300D6A4C7 /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +74,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				612762A826D3341800AB92CA /* Alamofire.xcframework in Frameworks */,
+				616EB11D2760A9FE00D6A4C7 /* RealmSwift.xcframework in Frameworks */,
+				616EB11F2760A9FE00D6A4C7 /* Realm.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +105,7 @@
 				614FE91927158E4600A89BE1 /* GeneralVC */,
 				614FE91A27158E5C00A89BE1 /* DetailVC */,
 				6117730A274412DC00A21144 /* Persistance.swift */,
+				616EB1212760E3C300D6A4C7 /* GlobalModel.swift */,
 				610D7D3326D32D440099713E /* SceneDelegate.swift */,
 				610D7D3126D32D440099713E /* AppDelegate.swift */,
 				610D7D3C26D32D480099713E /* LaunchScreen.storyboard */,
@@ -106,6 +119,8 @@
 		612762A226D333AA00AB92CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				616EB11C2760A9FE00D6A4C7 /* Realm.xcframework */,
+				616EB11B2760A9FE00D6A4C7 /* RealmSwift.xcframework */,
 				612762A326D333AA00AB92CA /* Alamofire.xcframework */,
 			);
 			name = Frameworks;
@@ -215,6 +230,7 @@
 				6141347326D3DDC70020E1D3 /* GeneralTableViewCell.swift in Sources */,
 				610D7D3426D32D440099713E /* SceneDelegate.swift in Sources */,
 				611773072744017900A21144 /* GeneralPresenter.swift in Sources */,
+				616EB1222760E3C300D6A4C7 /* GlobalModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
