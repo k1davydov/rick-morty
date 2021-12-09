@@ -1,4 +1,4 @@
-# rick-morty
+# Rick & Morty
 ##### Привет, это приложение позволяет вспомнить всех персонажей из вселенной "Рик и Морти"...time of nostalgia)
 ----
 Приложение взаимодействует с [Rick & Morty API](https://rickandmortyapi.com)    
