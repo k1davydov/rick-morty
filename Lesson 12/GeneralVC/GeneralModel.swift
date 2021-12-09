@@ -9,51 +9,24 @@ import Foundation
 import UIKit
 import Alamofire
 
-var generalUrl = "https://rickandmortyapi.com/api/character"
-var generalNextPage: String?
-var alertOfConnectionShowed = false
-
-struct RickMorty {
+struct ListCharacter {
     let name: String
-    let status: (String, UIColor)
+    let status: String
     let species: String
     let gender: String
-    
     var image: UIImage
-    
-    let episodeUrl: NSArray
-    let imageUrl: String
-    let locationUrl: String
+    let location: String
     let characterUrl: String
 }
 
-class Connectivity {
-    static var isConnectedToInternet:Bool {
-        return NetworkReachabilityManager()!.isReachable
-    }
-}
-
 protocol GeneralPresenterProtocol: UITableViewDataSource {
-    init(view: UITableView, model: [RickMorty])
+    init(view: UITableView, model: [ListCharacter], vc: UIViewController)
 }
 
-func checkInternetConnection(_ vc: UIViewController) {
-    guard !Connectivity.isConnectedToInternet else {
-        alertOfConnectionShowed = false
-        return
-    }
-    
-    Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { timer in
-        if Connectivity.isConnectedToInternet {
-            timer.invalidate()
-        }
-        print("Check Internet connection")
-    }
-    guard !alertOfConnectionShowed else {return}
+func showAlert(vc: UIViewController) {
     let alert = UIAlertController(title: "Lost internet connection", message: "Try to connect", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
     vc.present(alert, animated: true, completion: nil)
-    alertOfConnectionShowed = true
 }
 
 func downloadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
@@ -70,8 +43,9 @@ func downloadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
     }
 }
 
-func downloadData(_ url: String, completion: @escaping (Any) -> Void) {
-    AF.request(url).validate().responseJSON { responseJSON in
+func downloadData(pageNumber: Int, completion: @escaping (Any) -> Void) {
+    let params = ["page":pageNumber]
+    AF.request(generalUrl+"/character", parameters: params).validate().responseJSON { responseJSON in
         switch responseJSON.result {
         case .success(let value):
             completion(value)
@@ -81,41 +55,42 @@ func downloadData(_ url: String, completion: @escaping (Any) -> Void) {
     }
 }
 
-func parserCharacters(_ data: Any) -> [RickMorty] {
+func parserCharacters(_ data: Any) -> [(String, String, String, String, UIImage, String, String, String)]? {
     guard let dictionary = data as? NSDictionary,
-          let info = dictionary["info"] as? NSDictionary, let nextPage = info["next"] as? String?,
-          let array = dictionary["results"] as? NSArray else {return [RickMorty]()}
-    generalNextPage = nextPage
-    var rickMortys = [RickMorty]()
+          let array = dictionary["results"] as? NSArray else {return nil}
+    var result = [(String, String, String, String, UIImage, String, String, String)]()
     for element in array {
-        guard let rickMorty = parserOneCharacter(element) else {return [RickMorty]()}
-        rickMortys.append(rickMorty)
+        guard let character = parserListCharacter(element) else {
+            print("Ошибка при парсинге: \(element)")
+            return nil
+        }
+        result.append(character)
     }
-    return rickMortys
+    return result
 }
 
-func parserOneCharacter(_ data: Any) -> RickMorty? {
+func parserListCharacter(_ data: Any) -> (String, String, String, String, UIImage, String, String, String)? {
     guard let dict = data as? NSDictionary,
           let name = dict["name"] as? String,
           let status = dict["status"] as? String,
           let species = dict["species"] as? String,
           let gender = dict["gender"] as? String,
           let imageUrl = dict["image"] as? String,
-          let location = dict["location"] as? NSDictionary, let locationUrl = location["name"] as? String,
-          let characterUrl = dict["url"] as? String,
-          let episode = dict["episode"] as? NSArray else {
-              print("Ошибка при парсинге данных персонажа")
+          let location1 = dict["location"] as? NSDictionary, let location = location1["name"] as? String,
+          let characterUrl = dict["url"] as? String else {
+              print("Error when parsing the list character")
               return nil
           }
-    var statusFinal: (String, UIColor) = ("Unknown", .systemOrange)
+    return (name, status, species, gender, UIImage(systemName: "person")!, imageUrl, location, characterUrl)
+}
+
+func chooseColor(status: String) -> UIColor {
     switch status {
     case "Alive":
-        statusFinal = ("Alive", .systemGreen)
+        return .systemGreen
     case "Dead":
-        statusFinal = ("Dead", .systemRed)
+        return .systemRed
     default:
-        statusFinal = ("Unknown", .systemOrange)
+        return .systemOrange
     }
-    let rickMorty = RickMorty(name: name, status: statusFinal, species: species, gender: gender, image: UIImage(systemName: "person")!, episodeUrl: episode, imageUrl: imageUrl, locationUrl: locationUrl, characterUrl: characterUrl)
-    return rickMorty
 }
